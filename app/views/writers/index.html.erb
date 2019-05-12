@@ -1,0 +1,13 @@
+<h1>WRITERS</h1>
+
+<% @writers.each do |writer| %>
+   
+    <p><%=writer.name%></p> 
+    <p><%=writer.age%></p>
+    <p><%=writer.email%></p>
+ <%=link_to "delete", writer_path(writer), method: 'delete' %><p>
+    --------------------
+     <%end%>
+
+
+

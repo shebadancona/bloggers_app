@@ -1,0 +1,17 @@
+
+<p>
+<%=@article.created_at.strftime("posted on %m/%d/%Y at %I:%M%p")%>
+<br/>
+<br/>
+<strong>Title:</strong>
+<%= @article.title %>
+</p>
+
+<p>
+<strong>Text:</strong>
+<%= @article.text %>
+</p>
+
+<% if is_my_article? %>
+<%=link_to "Delete", article_path(@article),method: :delete%>
+<%end%>

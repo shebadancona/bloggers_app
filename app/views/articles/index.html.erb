@@ -1,0 +1,38 @@
+<h1>Articles#index</h1>
+
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :title %>
+  <%= f.search_field :title_cont %>
+  <%= f.label :writer_name %>
+  <%= f.search_field :writer_name_start %>
+
+
+  <%= f.submit %>
+<% end %>
+
+<table>
+<tr>
+<th>Writer</th>
+<th> Title </th>
+<th> Date Posted</th>
+</tr>
+
+
+
+
+<% @articles.each do |article| %>
+    <tr>
+    <td><%=article.writer.name%></td>
+    <td><%=link_to article.title, article_path(article)%></td>
+    <td><%=article.created_at.strftime("posted on %m/%d/%Y at %I:%M%p")%></td>
+    <tr/>
+   
+<%end%>
+</table>
+
+
+
+      <%if @is_writer%>
+    <%=link_to "Create New Article", new_article_path%>
+    <%end%>
