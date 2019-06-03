@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   
     if r && r.authenticate(params[:session][:password])
       session[:writer_id] = r.id
+      puts "........................#{session[:writer_id]}"
       redirect_to articles_my_articles_url
    
     elsif u && u.authenticate(params[:session][:password])

@@ -1,38 +1,46 @@
-<h1>Articles#index</h1>
+<div class="container-fluid">
+<center><h1>Articles#index</h1></center>
+<br>
+<center><%= search_form_for @q do |f| %>
 
-<%= search_form_for @q do |f| %>
-
-  <%= f.label :title %>
+  <%= f.label :title  %>
   <%= f.search_field :title_cont %>
   <%= f.label :writer_name %>
   <%= f.search_field :writer_name_start %>
 
 
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-success" %> 
 <% end %>
+<br>
+<br>
 
-<table>
-<tr>
-<th>Writer</th>
-<th> Title </th>
-<th> Date Posted</th>
-</tr>
+<table class = "table">
+<thead>
+<tr scope="row">
+<th scope="col"><font size="5"> Writer </font></th> 
+<th scope="col"><font size="5"> Title </font></th>
+<th scope="col"><font size="5"> Date Posted</font></th> 
+</tr> 
+</thead>
+<dl>
 
 
 
 
 <% @articles.each do |article| %>
-    <tr>
-    <td><%=article.writer.name%></td>
-    <td><%=link_to article.title, article_path(article)%></td>
-    <td><%=article.created_at.strftime("posted on %m/%d/%Y at %I:%M%p")%></td>
+    <tr scope="row">
+    <td scope="col"><%=article.writer.name%></td>
+    <td scope="col"><%=link_to article.title, article_path(article)%></td>
+    <td scope="col"><%=article.created_at.strftime("posted on %m/%d/%Y at %I:%M%p") %> </td>
     <tr/>
-   
+  
 <%end%>
 </table>
 
 
 
-      <%if @is_writer%>
-    <%=link_to "Create New Article", new_article_path%>
+      <%if session[:writer_id]%>
+    <p><%=link_to "Create New Article", new_article_path%></p>
     <%end%>
+
+</div>

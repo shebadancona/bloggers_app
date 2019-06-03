@@ -11,7 +11,9 @@
 <strong>Text:</strong>
 <%= @article.text %>
 </p>
-
-<% if is_my_article? %>
-<%=link_to "Delete", article_path(@article),method: :delete%>
+ 
+<% if session[:writer_id] && session[:writer_id] == @article.writer.id %>
+<p><%=link_to "Delete", article_path(@article),method: :delete%></p>
 <%end%>
+
+<p><%=link_to "Back", articles_path(@articles)%></p>

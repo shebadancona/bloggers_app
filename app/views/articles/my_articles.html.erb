@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <h1>My Articles#index</h1>
 <%= search_form_for @q do |f| %>
 
@@ -7,11 +8,17 @@
   
     <%= f.submit %>
   <% end %>
-<table>
-    <tr>
-        <th> Title </th>
+  <br>
+  <br>
+
+<table class = "table">
+    <thead>
+    <tr scope = "row">
+        <th scope="col"><font size="5"> Title</font></th>
         <th> Date Posted</th>
     </tr>
+    </thead>
+    <dl>
 <% @articles.each do |article| %>
 
    
@@ -27,3 +34,4 @@
     <%=link_to "Create New Article", new_article_path%>
    <%= link_to "All Articles", articles_path%>
 
+   </div>

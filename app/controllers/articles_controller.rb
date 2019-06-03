@@ -37,7 +37,7 @@ end
  
   def show
     @article = Article.find(params[:id])
-  end
+     end
   private 
   def article_params
     params.require(:article).permit(:title, :text)

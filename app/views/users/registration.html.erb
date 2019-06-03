@@ -1,6 +1,6 @@
 <h1 style="text-align:center;">Registration Form</h1>
-
 <%= form_with scope: :user, url: users_path,local: true do |form| %>
+  <div class="container-fluid">
     <p>
       <%= form.label :name %><br>
       <%= form.text_field :name %>
@@ -28,4 +28,5 @@
     <p>
       <%= form.submit %>
     </p>
+    </div>
   <% end %>

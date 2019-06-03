@@ -1,5 +1,5 @@
 
-
+<div class="container-fluid">
 <%= form_with scope: :article,url: articles_path, local: true do |form| %>
     <p>
       <%= form.label :title %><br>
@@ -15,3 +15,7 @@
       <%= form.submit %>
     </p>
   <% end %>
+</div>
+
+<p><%=link_to "Back", articles_my_articles_path(@articles)%></p>
+

@@ -10,17 +10,36 @@
   </head>
 
   <body>
-   <% if current_writer %>
-   Hello <%= current_writer.email %>
-   <%= link_to 'Log Out', sessions_path, method: :delete %>
-   <% else %>
-   <%= link_to 'Writers Registration', writers_registration_path %>
-   |
-   <%= link_to 'Users Registration', user_registration_path %>
-   |
-   <%= link_to 'Log In', new_sessions_path %>
-   <%end%>
+  
 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Bloggers App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <% if current_writer %>
+       <li class="nav-item">
+           <a class="nav-link" href="#"> <%= current_writer.email %></a>
+      </li>
+      <li class="nav-item">
+          <%= link_to 'Log Out', sessions_path, method: :delete, class:"nav-link"%>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to 'Writers Registration', writers_registration_path, class:"nav-link #{active_class(writers_registration_path)}"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Users Registration', user_registration_path,class:"nav-link #{active_class(user_registration_path)}"%>
+      </li>
+       <li class="nav-item">
+        <%= link_to 'Log In', new_sessions_path, class:"nav-link #{active_class(new_sessions_path)}" %>
+      </li>
+      <%end%>
+    </ul>
+  </div>
+</nav>
 
     <%= yield %>
   </body>
